@@ -1,8 +1,125 @@
+html {
+  height: 100%;
+}
+
 body {
-  padding: 50px;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #ffffff;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.banner-container{
+  position: relative;
+  text-align: center;
+  color: white;
 }
+
+.homepage-banner{
+  height: auto;
+  width: 100%;
+}
+
+.banner-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #ececec;
+  font-size: 6.5rem;
+  font-weight: bold;
+}
+
+.left-sub-banner{
+  border: #3ac793 solid 5px;
+  border-radius: 15px;
+  height: 30rem;
+  width: 50rem;
+  background-color: #3ac793;
+  font-size: 5rem;
+  text-align: center;
+}
+
+.right-sub-banner{
+  border: #a0f0d3 solid 5px;
+  border-radius: 15px;
+  height: 30rem;
+  width: 50rem;
+  background-color: #a0f0d3;
+  font-size: 2rem;
+  text-align: left;
+}
+
+.about-row{
+  background-color: #04aa6d;
+}
+
+.about-banner{
+text-align: center;
+}
+
+/* Start Navbar Styles */
+/*  */
+/* Start Navbar Styles */
+
+/* Add a black background color to the top navigation */
+.topnav {
+  background-color: rgba(51, 51, 51, 0.452);
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  left: 0;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: rgb(59, 59, 59);
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #04aa6d;
+  color: white;
+}
+
+/* End Navbar Styles */
+/*  */
+/* End Navbar Styles */
+
+.margin-left-sm {
+  margin-left: 1rem;
+}
+
+/* Start Footer style */
+/*  */
+/* Start Footer style */
+.page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.navbar-logo{
+  width: 15rem;
+  height: auto;
+}
+
+
+/* End Footer Style */
+/*  */
+/* End Footer Style */
