@@ -24,6 +24,7 @@ body {
   width: 100%;
 }
 
+
 .banner-text{
   position: absolute;
   top: 50%;
@@ -31,8 +32,9 @@ body {
   transform: translate(-50%, -50%);
   text-align: center;
   color: #ececec;
-  font-size: 6.5rem;
+  font-size: 5vw;
   font-weight: bold;
+  
 }
 
 .left-sub-banner{
