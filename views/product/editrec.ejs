@@ -1,0 +1,120 @@
+<h1>Edit Product</h1>
+<form action="/product/save" method="post">
+  <input type="hidden" name="product_id" value="<%= onerec.product_id %>" />
+  <table>
+    <tr>
+      <td>Product Name:</td>
+      <td>
+        <input
+          type="text"
+          name="productname"
+          value="<%= onerec.productname %>"
+          required
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Image:</td>
+      <td>
+        <input
+          type="text"
+          name="prodimage"
+          value="<%= onerec.prodimage %>"
+          required
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td>
+        <textarea
+          name="description"
+          rows="10"
+          cols="30"
+          placeholder="Description"
+        >
+<%=
+onerec.description %></textarea
+        >
+      </td>
+    </tr>
+    <tr>
+      <td>Supplier ID:</td>
+      <td>
+        <input
+          type="number"
+          name="supplier_id"
+          value="<%"
+          ="onerec.supplier_id"
+          %
+        />
+        required>
+      </td>
+    </tr>
+    <tr>
+      <td>Category ID:</td>
+      <td>
+        <input
+          type="number"
+          name="category_id"
+          value="<%"
+          ="onerec.category_id"
+          %
+        />
+        required>
+      </td>
+    </tr>
+    <tr>
+      <td>Sub Category 1:</td>
+      <td>
+        <input
+          type="text"
+          name="subcategory_1"
+          value="<%= onerec.subcategory_1 %>"
+          required
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Sub Category 2:</td>
+      <td>
+        <input
+          type="text"
+          name="subcategory_2"
+          value="<%= onerec.subcategory_2 %>"
+          required
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Dimensions:</td>
+      <td>
+        <input
+          type="text"
+          name="dimensions"
+          value="<%= onerec.dimensions %>"
+          required
+        />
+      </td>
+    </tr>
+    <tr>
+      <td>Price:</td>
+      <td>
+        <input type="text" name="prodprice" value="<%" ="onerec.prodprice" % />
+        required>
+      </td>
+    </tr>
+    <tr>
+      <td>Status:</td>
+      <td>
+        <select name="status" required>
+          <option selected><%= onerec.status %></option>
+          <option>Available</option>
+          <option>Discontinued</option>
+          <option>Future Plan</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+  <button type="submit">Save</button>
+</form>

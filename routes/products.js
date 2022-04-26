@@ -75,10 +75,70 @@ router.post("/", function (req, res, next) {
   );
 });
 
-router.get("/:recordid/edit", function (req, res, next) {});
+// ==================================================
+// Route to edit one specific record.
+// ==================================================
+router.get("/:recordid/edit", function (req, res, next) {
+  let query =
+    "SELECT product_id, productname, prodimage, description, supplier_id, category_id, subcategory_1, subcategory_2, dimensions, prodprice, status FROM product WHERE product_id = " +
+    req.params.recordid;
+  // execute query
+  db.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.render("error");
+    } else {
+      res.render("product/editrec", { onerec: result[0] });
+    }
+  });
+});
 
-router.post("/save", function (req, res, next) {});
+// ==================================================
+// Route to save edited data in database.
+// ==================================================
+router.post("/save", function (req, res, next) {
+  let updatequery =
+    "UPDATE product SET productname = ?, prodimage = ?, description = ?, supplier_id = ?, category_id = ?, subcategory_1 = ?, subcategory_2 = ?, dimensions = ?, prodprice = ?, status = ? WHERE product_id = " +
+    req.body.product_id;
+  db.query(
+    updatequery,
+    [
+      req.body.productname,
+      req.body.prodimage,
+      req.body.description,
+      req.body.supplier_id,
+      req.body.category_id,
+      req.body.subcategory_1,
+      req.body.subcategory_2,
+      req.body.dimensions,
+      req.body.prodprice,
+      req.body.status,
+    ],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.render("error");
+      } else {
+        res.redirect("/product");
+      }
+    }
+  );
+});
 
-router.get("/:recordid/delete", function (req, res, next) {});
+// ==================================================
+// Route to delete one specific record.
+// ==================================================
+router.get("/:recordid/delete", function (req, res, next) {
+  let query = "DELETE FROM product WHERE product_id = " + req.params.recordid;
+  // execute query
+  db.query(query, (err, result) => {
+    if (err) {
+      console.log(err);
+      res.render("error");
+    } else {
+      res.redirect("/product");
+    }
+  });
+});
 
 module.exports = router;
