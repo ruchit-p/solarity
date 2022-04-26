@@ -1,4 +1,3 @@
-1) Create database tables and add sample database
 2) fix allrecords table headers
 3) change all products variables and import my products data
 4) Change onerec and show route in products router

@@ -1,5 +1,5 @@
 CREATE TABLE customer(
-    cusomter_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     firstname VARCHAR(20) NOT NULL,
     lastname VARCHAR(20) NOT NULL,
     email VARCHAR(30) NOT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE product (
     power_tolerance INT NOT NULL,
     prodprice DECIMAL(8,2) NOT NULL,
     status VARCHAR(20) NOT NULL,
-    quanity INT NOT NULL,
+    quantity INT NOT NULL,
     FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE ON UPDATE RESTRICT,
     FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id) ON DELETE CASCADE ON UPDATE RESTRICT
 );
@@ -95,7 +95,7 @@ INSERT INTO category(categoryname, description) VALUES ("Residential Solar Panel
 INSERT INTO supplier(suppliername, pointofcontact, weburl, suppliernotes) 
 VALUES ("Dmsolar", "online", "https://www.dmsolar.com/", "Supplier is based in florida and provides solar cells, panels, systems, and attic ventilators.");
 
-INSERT INTO product(productname, prodimage, description, category_id, supplier_id, dimensions, wattage, cell_efficiency, weight, power_tolerance, prodprice, status, quanity) 
+INSERT INTO product(productname, prodimage, description, category_id, supplier_id, dimensions, wattage, cell_efficiency, weight, power_tolerance, prodprice, status, quantity) 
 VALUES ("DMSOLAR Solar Panel 300w", "dmsolar300wmodule.png", "Industry leading solar panel features a strong frame passing a mechanical load test of 2400Pa to withstand heavy snow load and higher wind pressure. 25 Year warrenty.", 
 1, 1, '77"x38.98"x1.97"', 300, 17.44, 52.14, 3, 1080, "instock", 12);
 

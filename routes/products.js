@@ -8,7 +8,7 @@ var router = express.Router();
 // ==================================================
 router.get("/", function (req, res, next) {
   let query =
-    "SELECT product_id, productname, supplier_id, category_id, prodprice, status FROM product";
+    "SELECT product_id, productname, supplier_id, category_id, prodprice, status, quantity FROM product";
   // execute query
   db.query(query, (err, result) => {
     if (err) {
@@ -16,6 +16,7 @@ router.get("/", function (req, res, next) {
       res.render("error");
     }
     res.render("product/allrecords", { allrecs: result });
+    console.log(result);
   });
 });
 
@@ -23,8 +24,9 @@ router.get("/", function (req, res, next) {
 // Route to view one specific record. Notice the view is one record
 // ==================================================
 router.get("/:recordid/show", function (req, res, next) {
+  console.log("here")
   let query =
-    "SELECT product_id, productname, prodimage, description, supplier_id, category_id, subcategory_1, subcategory_2, dimensions, prodprice, status FROM product WHERE product_id = " +
+    "SELECT product_id, productname, prodimage, description, supplier_id, category_id, wattage, cell_efficiency, weight, dimensions, prodprice, status, quantity FROM product WHERE product_id = " +
     req.params.recordid;
   // execute query
   db.query(query, (err, result) => {
@@ -32,6 +34,7 @@ router.get("/:recordid/show", function (req, res, next) {
       console.log(err);
       res.render("error");
     } else {
+      console.log('rendering')
       res.render("product/onerec", { onerec: result[0] });
     }
   });
@@ -49,20 +52,23 @@ router.get("/addrecord", function (req, res, next) {
 // ==================================================
 router.post("/", function (req, res, next) {
   let insertquery =
-    "INSERT INTO product (productname, prodimage, description, supplier_id, category_id, subcategory_1, subcategory_2, dimensions, prodprice, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO product (productname, prodimage, description, category_id, supplier_id, dimensions, wattage, cell_efficiency, weight, power_tolerance, prodprice, status, quantity) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   db.query(
     insertquery,
     [
       req.body.productname,
       req.body.prodimage,
       req.body.description,
-      req.body.supplier_id,
       req.body.category_id,
-      req.body.subcategory_1,
-      req.body.subcategory_2,
+      req.body.supplier_id,
       req.body.dimensions,
+      req.body.wattage,
+      req.body.cell_efficiency,
+      req.body.weight,
+      req.body.power_tolerance,
       req.body.prodprice,
       req.body.status,
+      req.body.quantity,
     ],
     (err, result) => {
       if (err) {
@@ -80,7 +86,7 @@ router.post("/", function (req, res, next) {
 // ==================================================
 router.get("/:recordid/edit", function (req, res, next) {
   let query =
-    "SELECT product_id, productname, prodimage, description, supplier_id, category_id, subcategory_1, subcategory_2, dimensions, prodprice, status FROM product WHERE product_id = " +
+    "SELECT productname, prodimage, description, category_id, supplier_id, dimensions, wattage, cell_efficiency, weight, power_tolerance, prodprice, status, quantity FROM product WHERE product_id = " +
     req.params.recordid;
   // execute query
   db.query(query, (err, result) => {
@@ -97,22 +103,37 @@ router.get("/:recordid/edit", function (req, res, next) {
 // Route to save edited data in database.
 // ==================================================
 router.post("/save", function (req, res, next) {
+  console.log("logging this ----",req.body.productname,
+      req.body.prodimage,
+      req.body.description,
+      req.body.category_id,
+      req.body.supplier_id,
+      req.body.dimensions,
+      req.body.wattage,
+      req.body.cell_efficiency,
+      req.body.weight,
+      req.body.power_tolerance,
+      req.body.prodprice,
+      req.body.status,
+      req.body.quantity)
   let updatequery =
-    "UPDATE product SET productname = ?, prodimage = ?, description = ?, supplier_id = ?, category_id = ?, subcategory_1 = ?, subcategory_2 = ?, dimensions = ?, prodprice = ?, status = ? WHERE product_id = " +
-    req.body.product_id;
+    'UPDATE product SET productname = ?, prodimage = ?, description = ?, category_id = ?, supplier_id = ?, dimensions = ?, wattage = ?, cell_efficiency = ?, weight = ?, power_tolerance = ?,  prodprice = ?, status = ?, quantity = ? WHERE product_id = ' + req.body.product_id;
   db.query(
     updatequery,
     [
       req.body.productname,
       req.body.prodimage,
       req.body.description,
-      req.body.supplier_id,
       req.body.category_id,
-      req.body.subcategory_1,
-      req.body.subcategory_2,
+      req.body.supplier_id,
       req.body.dimensions,
+      req.body.wattage,
+      req.body.cell_efficiency,
+      req.body.weight,
+      req.body.power_tolerance,
       req.body.prodprice,
       req.body.status,
+      req.body.quantity,
     ],
     (err, result) => {
       if (err) {

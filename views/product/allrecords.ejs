@@ -1,6 +1,18 @@
 <% if (allrecs.length > 0) {%>
 <table>
     <!-- add table header -->
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Supplier ID</th>
+      <th>Category ID</th>
+      <th>Price</th>
+      <th>Status</th>
+      <th>Quantity</th>
+      <th>Details</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
     
   <% allrecs.forEach((recref, index) => { %>
   <tr>
@@ -10,6 +22,7 @@
     <td><%= recref.category_id %></td>
     <td><%= recref.prodprice %></td>
     <td><%= recref.status %></td>
+    <td><%= recref.quantity %></td>
     <td><a href="/product/<%= recref.product_id %>/show"> Details</a></td>
     <td>
       <a href="/product/<%= recref.product_id %>/edit">Edit</a>
@@ -23,4 +36,6 @@
 <% } else { %>
 <p>No Records Available</p>
 <% } %>
+<br>
+<br>
 <p><a href="/product/addrecord">Add New</a></p>
