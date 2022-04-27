@@ -1,0 +1,20 @@
+<h1>Edit Category</h1>
+<form action="/category/save" method="post">
+  <input type="hidden" name="category_id" value="<%= onerec.category_id %>" />
+  <table>
+    <tr>
+      <td>Category Name:</td>
+      <td>
+        <input type="text" name="categoryname" value="<%= onerec.categoryname %>" required />
+      </td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td>
+        <textarea name="description" rows="10" cols="30" placeholder="Description" required>
+<%= onerec.description %></textarea>
+      </td>
+    </tr>
+  </table>
+  <button type="submit">Save</button>
+</form>

@@ -1,0 +1,33 @@
+<h1>New Record</h1>
+<form action="/saleorder" method="post">
+  <table>
+    <tr>
+      <td>Customer ID:</td>
+      <td><input type="text" name="customer_id" required /></td>
+    </tr>
+    <tr>
+      <td>Sale Date:</td>
+      <td><input type="text" name="saledate" required /></td>
+    </tr>
+    <tr>
+      <td>Customer Notes:</td>
+      <td>
+        <textarea
+          name="customernotes"
+          rows="10"
+          cols="30"
+          placeholder="Customer Notes"
+        ></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>Payment Status:</td>
+      <td><input type="text" name="paymentstatus" required /></td>
+    </tr>
+    <tr>
+      <td>Authorization Number:</td>
+      <td><input type="text" name="authorizationnum" required /></td>
+    </tr>
+  </table>
+  <button type="submit">Save</button>
+</form>

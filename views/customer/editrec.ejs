@@ -1,0 +1,76 @@
+<h1>Edit Customer Info</h1>
+<form action="/customer/save" method="post">
+  <input type="hidden" name="customer_id" value="<%= onerec.customer_id %>" />
+  <table>
+    <tr>
+      <td>First Name:</td>
+      <td>
+        <input type="text" name="firstname" value="<%= onerec.firstname %>" required />
+      </td>
+    </tr>
+    <tr>
+      <td>Last Name:</td>
+      <td>
+        <input type="text" name="lastname" value="<%= onerec.lastname %>" required />
+      </td>
+    </tr>
+    <tr>
+      <td>Email:</td>
+      <td>
+        <input type="text" name="email" value="<%= onerec.email %>" required />
+      </td>
+    </tr>
+    <tr>
+      <td>Phone:</td>
+      <td>
+        <input type="number" name="phone" value="<%= onerec.phone %>"
+        required>
+      </td>
+    </tr>
+    <tr>
+      <td>Address Line 1:</td>
+      <td>
+        <input type="text" name="address1" value="<%= onerec.address1 %>"
+        required>
+      </td>
+    </tr>
+    <tr>
+      <td>Address Line 2:</td>
+      <td>
+        <input type="text" name="address2" value="<%= onerec.address2 %>" />
+      </td>
+    </tr>
+    <tr>
+      <td>City:</td>
+      <td>
+        <input type="text" name="city" value="<%= onerec.city %>" required />
+      </td>
+    </tr>
+    <tr>
+      <td>State:</td>
+      <td>
+        <input type="text" name="state" value="<%= onerec.state %>" required />
+      </td>
+    </tr>
+    <tr>
+      <td>Zip:</td>
+      <td>
+        <input type="text" name="zip" value="<%= onerec.zip %>" required />
+      </td>
+    </tr>
+    <tr>
+      <td>Username:</td>
+      <td>
+        <input type="text" name="username" value="<%= onerec.username %>" required />
+      </td>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td>
+        <input type="text" name="password" value="<%= onerec.password %>"
+        required>
+      </td>
+    </tr>
+  </table>
+  <button type="submit">Save</button>
+</form>

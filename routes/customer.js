@@ -1,21 +1,21 @@
 var express = require("express");
 var router = express.Router();
 
-/* Products Route CRUD */
+/* Customers Route CRUD */
 
 // ==================================================
 // Route to list all records. Display view to list all records
 // ==================================================
 router.get("/", function (req, res, next) {
   let query =
-    "SELECT product_id, productname, supplier_id, category_id, prodprice, status, quantity FROM product";
+    "SELECT customer_id, firstname, lastname, email, address1, city, state, zip, username FROM customer";
   // execute query
   db.query(query, (err, result) => {
     if (err) {
       console.log(err);
       res.render("error");
     }
-    res.render("product/allrecords", { allrecs: result });
+    res.render("customer/allrecords", { allrecs: result });
   });
 });
 
@@ -23,9 +23,8 @@ router.get("/", function (req, res, next) {
 // Route to view one specific record. Notice the view is one record
 // ==================================================
 router.get("/:recordid/show", function (req, res, next) {
-  console.log("here")
   let query =
-    "SELECT product_id, productname, prodimage, description, category_id, supplier_id, wattage, cell_efficiency, weight, dimensions, prodprice, status, quantity FROM product WHERE product_id = " +
+    "SELECT customer_id, firstname, lastname, email, phone, address1, address2, city, state, zip, username FROM customer WHERE customer_id = " +
     req.params.recordid;
   // execute query
   db.query(query, (err, result) => {
@@ -33,9 +32,7 @@ router.get("/:recordid/show", function (req, res, next) {
       console.log(err);
       res.render("error");
     } else {
-      console.log("here")
-      console.log(result); // show in console
-      res.render("product/onerec", { onerec: result[0] });
+      res.render("customer/onerec", { onerec: result[0] });
     }
   });
 });
@@ -44,7 +41,7 @@ router.get("/:recordid/show", function (req, res, next) {
 // Route to show empty form to obtain input form end-user.
 // ==================================================
 router.get("/addrecord", function (req, res, next) {
-  res.render("product/addrec");
+  res.render("customer/addrec");
 });
 
 // ==================================================
@@ -52,30 +49,28 @@ router.get("/addrecord", function (req, res, next) {
 // ==================================================
 router.post("/", function (req, res, next) {
   let insertquery =
-    "INSERT INTO product (productname, prodimage, description, category_id, supplier_id, dimensions, wattage, cell_efficiency, weight, power_tolerance, prodprice, status, quantity) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO customer (firstname, lastname, email, phone, address1, address2, city, state, zip, username, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   db.query(
     insertquery,
     [
-      req.body.productname,
-      req.body.prodimage,
-      req.body.description,
-      req.body.category_id,
-      req.body.supplier_id,
-      req.body.dimensions,
-      req.body.wattage,
-      req.body.cell_efficiency,
-      req.body.weight,
-      req.body.power_tolerance,
-      req.body.prodprice,
-      req.body.status,
-      req.body.quantity,
+      req.body.firstname,
+      req.body.lastname,
+      req.body.email,
+      req.body.phone,
+      req.body.address1,
+      req.body.address2,
+      req.body.city,
+      req.body.state,
+      req.body.zip,
+      req.body.username,
+      req.body.password,
     ],
     (err, result) => {
       if (err) {
         console.log(err);
         res.render("error");
       } else {
-        res.redirect("/product");
+        res.redirect("/customer");
       }
     }
   );
@@ -86,7 +81,7 @@ router.post("/", function (req, res, next) {
 // ==================================================
 router.get("/:recordid/edit", function (req, res, next) {
   let query =
-    "SELECT product_id, productname, prodimage, description, category_id, supplier_id, dimensions, wattage, cell_efficiency, weight, power_tolerance, prodprice, status, quantity FROM product WHERE product_id = " +
+    "SELECT customer_id, firstname, lastname, email, phone, address1, address2, city, state, zip, username, password FROM customer WHERE customer_id = " +
     req.params.recordid;
   // execute query
   db.query(query, (err, result) => {
@@ -94,7 +89,7 @@ router.get("/:recordid/edit", function (req, res, next) {
       console.log(err);
       res.render("error");
     } else {
-      res.render("product/editrec", { onerec: result[0] });
+      res.render("customer/editrec", { onerec: result[0] });
     }
   });
 });
@@ -102,32 +97,47 @@ router.get("/:recordid/edit", function (req, res, next) {
 // ==================================================
 // Route to save edited data in database.
 // ==================================================
-router.post('/save', function(req, res, next) {
-let updatequery = "UPDATE product SET productname = ?, prodimage = ?, description = ?, category_id = ?, supplier_id = ?, dimensions = ?, wattage = ?, cell_efficiency = ?, weight = ?, power_tolerance = ?, prodprice = ?, status = ?, quantity = ? WHERE product_id = " + req.body.product_id;
-db.query(updatequery,[req.body.productname, req.body.prodimage, req.body.description, req.body.category_id,
-req.body.supplier_id, req.body.dimensions, req.body.wattage, req.body.cell_efficiency, req.body.weight,
-req.body.power_tolerance, req.body.prodprice, req.body.status, req.body.quantity],(err, result) => {
-if (err) {
-console.log(err);
-res.render('error');
-} else {
-res.redirect( '/product');
-}
-});
+router.post("/save", function (req, res, next) {
+  let updatequery =
+    "UPDATE customer SET firstname = ?, lastname = ?, email = ?, phone = ?, address1 = ?, address2 = ?, city = ?, state = ?, zip = ?, username = ?,  password = ? WHERE customer_id = " + req.body.customer_id;
+  db.query(
+    updatequery,
+    [
+      req.body.firstname,
+      req.body.lastname,
+      req.body.email,
+      req.body.phone,
+      req.body.address1,
+      req.body.address2,
+      req.body.city,
+      req.body.state,
+      req.body.zip,
+      req.body.username,
+      req.body.password,
+    ],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+        res.render("error", {message:err.message ,error: err });
+      } else {
+        res.redirect("/customer");
+      }
+    }
+  );
 });
 
 // ==================================================
 // Route to delete one specific record.
 // ==================================================
 router.get("/:recordid/delete", function (req, res, next) {
-  let query = "DELETE FROM product WHERE product_id = " + req.params.recordid;
+  let query = "DELETE FROM customer WHERE customer_id = " + req.params.recordid;
   // execute query
   db.query(query, (err, result) => {
     if (err) {
       console.log(err);
       res.render("error");
     } else {
-      res.redirect("/product");
+      res.redirect("/customer");
     }
   });
 });

@@ -1,0 +1,32 @@
+<h1>Edit Transaction</h1>
+<form action="/transaction/save" method="post">
+  <input type="hidden" name="transaction_id" value="<%= onerec.transaction_id %>" />
+  <table>
+    <tr>
+      <td>Order ID:</td>
+      <td>
+        <input type="text" name="order_id" value="<%= onerec.order_id %>" required />
+      </td>
+    </tr>
+    <tr>
+      <td>Product ID:</td>
+      <td>
+        <input type="text" name="product_id" value="<%= onerec.product_id %>" required />
+      </td>
+    </tr>
+    <tr>
+      <td>Sale Price:</td>
+      <td>
+        <input type="number" name="saleprice" value="<%= onerec.saleprice %>"
+        required>
+      </td>
+    </tr>
+    <tr>
+      <td>Quantity:</td>
+      <td>
+        <input type="number" name="qty" value="<%= onerec.qty %>"
+        required>
+      </td>
+  </table>
+  <button type="submit">Save</button>
+</form>
