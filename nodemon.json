@@ -1,0 +1,11 @@
+{
+    "watch": ["/Users/ruchitpatel/Documents/Engineering Projects/solarity/"],
+    "ignore": ["node_modules", ".git"],
+    "ext": "js, json, html, css, ejs",
+    "env": {
+      "NODE_ENV": "development"
+    },
+    "execMap": {
+      "js": "node"
+    }
+  }
