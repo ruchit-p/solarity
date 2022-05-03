@@ -1,32 +1,78 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-  </head>
-  <body>
-    <div class="banner-container">
-      <img
-        class="homepage-banner"
-        src="/images/homepage-banner2.jpg"
-        alt="Banner Image"
-      />
-      <h1 class="banner-text">Power Your Future Today</h1>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+
+<body>
+  <div class="banner-container">
+    <img class="homepage-banner" src="/images/homepage-banner2.jpg" alt="Banner Image" />
+    <h1 class="banner-text">Power Your Future Today</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-16 col-md-12 mt-4 mb-4">
+        <% if (allrecs.length> 0) {%>
+          <% allrecs.forEach((recref, index)=> { %>
+            <product>
+              <table>
+                <tr>
+                  <td>
+                    <%= recref.productname %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= recref.prodimage %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= recref.category_id %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= recref.supplier_id %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= recref.prodprice %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <%= recref.status %>
+                  </td>
+                </tr>
+                <tr>
+                  <td><a href='/product/<%= recref.product_id %>/show'>Details</a></td>
+                </tr>
+              </table>
+            </product>
+            <% }); %>
+              <% } %>
+      </div>
     </div>
-    <div class="container-fluid">
-      <div class="row justify-content-evenly">
-        <div class="col-lg-4 col-md-4 mt-4 mb-4 left-sub-banner align-items-center">
-          <p class="mt-5">
+    <div class="row justify-content-evenly">
+      <div class="col-lg-4 col-md-4 mt-4 mb-4 left-sub-banner align-items-center">
+        <p class="mt-5">
           We are here to help you with all your solar needs.
         </p>
-        </div>
-        <div class="col-lg-4 col-md-4 mt-4 mb-4 right-sub-banner">
-          <p>
+      </div>
+      <div class="col-lg-4 col-md-4 mt-4 mb-4 right-sub-banner">
+        <p>
           To learn more about us <a href="/about">click here</a>. If you have
           any questions, please <a href="/contact">click here</a> to contact us.
         </p>
-        </div>
       </div>
     </div>
-  </body>
+  </div>
+</body>
+
 </html>

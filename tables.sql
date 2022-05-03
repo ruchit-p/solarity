@@ -45,6 +45,7 @@ CREATE TABLE product (
     prodprice DECIMAL(8,2) NOT NULL,
     status VARCHAR(20) NOT NULL,
     quantity INT NOT NULL,
+    homepage boolean NULL
     FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE CASCADE ON UPDATE RESTRICT,
     FOREIGN KEY (supplier_id) REFERENCES supplier(supplier_id) ON DELETE CASCADE ON UPDATE RESTRICT
 );

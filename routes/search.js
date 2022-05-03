@@ -3,10 +3,12 @@ var router = express.Router();
 // ==================================================
 // Route to view one specific record. Notice the view is one record
 // ==================================================
-router.get("/", function (req, res, next) {
+router.post("/", function (req, res, next) {
   let query =
     "SELECT product_id, productname, prodimage, category_id, supplier_id, dimensions, wattage, cell_efficiency, weight, power_tolerance, prodprice, status, quantity  FROM product WHERE description LIKE '%" +
-    req.query.searchcriteria +
+    req.body.searchcriteria +
+    "%' OR productname LIKE '%" +
+    req.body.searchcriteria +
     "%'";
   console.log("Query: " + query);
   // execute query

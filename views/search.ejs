@@ -1,0 +1,39 @@
+<h1>Search</h1>
+<% if (allrecs.length > 0) {%>
+<table>
+  <tr>
+    <th>Product Name</th>
+    <th>Image</th>
+    <th>Category</th>
+    <th>Supplier</th>
+    <th>Dimensions</th>
+    <th>Wattage</th>
+    <th>Cell Efficiency</th>
+    <th>Weight</th>
+    <th>Power Tolerance</th>
+    <th>Price</th>
+    <th>Status</th>
+    <th>Quantity</th>
+    <th>Details</th>
+  </tr>
+  <% allrecs.forEach((recref, index) => { %>
+  <tr>
+    <td><%= recref.productname %></td>
+    <td><%= recref.prodimage %></td>
+    <td><%= recref.category_id %></td>
+    <td><%= recref.supplier_id %></td>
+    <td><%= recref.dimensions %></td>
+    <td><%= recref.wattage %></td>
+    <td><%= recref.cell_efficiency %></td>
+    <td><%= recref.weight %></td>
+    <td><%= recref.power_tolerance %></td>
+    <td><%= recref.prodprice %></td>
+    <td><%= recref.status %></td>
+    <td><%= recref.quantity %></td>
+    <td><a href="/product/<%= recref.product_id %>/show">Details</a></td>
+  </tr>
+  <% }); %>
+</table>
+<% } else { %>
+<p>Not Records Available</p>
+<% } %>
