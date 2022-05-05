@@ -94,7 +94,11 @@
       </td>
       <td>
         <!-- check if the homepage value is 1, if it is then use checked property for checkbox -->
-        <input type="checkbox" name="homepage" value="<%= onerec.homepage %>" />
+        <% if (onerec.homepage) { %> 
+          <input type="checkbox" name="homepage" value="onerec.homepage" checked />
+        <% } else { %> 
+          <input type="checkbox" name="homepage" value="onerec.homepage" />
+        <% } %> 
       </td>
     </tr>
   </table>
