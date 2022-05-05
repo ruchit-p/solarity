@@ -1,39 +1,66 @@
-<h1>Search</h1>
-<% if (allrecs.length > 0) {%>
-<table>
-  <tr>
-    <th>Product Name</th>
-    <th>Image</th>
-    <th>Category</th>
-    <th>Supplier</th>
-    <th>Dimensions</th>
-    <th>Wattage</th>
-    <th>Cell Efficiency</th>
-    <th>Weight</th>
-    <th>Power Tolerance</th>
-    <th>Price</th>
-    <th>Status</th>
-    <th>Quantity</th>
-    <th>Details</th>
-  </tr>
-  <% allrecs.forEach((recref, index) => { %>
-  <tr>
-    <td><%= recref.productname %></td>
-    <td><%= recref.prodimage %></td>
-    <td><%= recref.category_id %></td>
-    <td><%= recref.supplier_id %></td>
-    <td><%= recref.dimensions %></td>
-    <td><%= recref.wattage %></td>
-    <td><%= recref.cell_efficiency %></td>
-    <td><%= recref.weight %></td>
-    <td><%= recref.power_tolerance %></td>
-    <td><%= recref.prodprice %></td>
-    <td><%= recref.status %></td>
-    <td><%= recref.quantity %></td>
-    <td><a href="/product/<%= recref.product_id %>/show">Details</a></td>
-  </tr>
-  <% }); %>
-</table>
-<% } else { %>
-<p>Not Records Available</p>
-<% } %>
+<div class="header">
+  <h1 class="pageHeader">Search Results</h1>
+</div>
+
+<% if (allrecs.length> 0) {%>
+  <table>
+    <tr class="thr topborder">
+      <th class="leftPadTable tableCell">Product Name</th>
+      <th class="tableCell">Image</th>
+      <th class="tableCell">Category</th>
+      <th class="tableCell">Supplier</th>
+      <th class="tableCell">Dimensions</th>
+      <th class="tableCell">Wattage</th>
+      <th class="tableCell">Cell Efficiency</th>
+      <th class="tableCell">Weight</th>
+      <th class="tableCell">Power Tolerance</th>
+      <th class="tableCell">Price</th>
+      <th class="tableCell">Status</th>
+      <th class="tableCell">Quantity</th>
+      <th class="tableCell">Details</th>
+    </tr>
+    <% allrecs.forEach((recref, index)=> { %>
+      <tr>
+        <td class="leftPadTable tableCell">
+          <%= recref.productname %>
+        </td>
+        <td class="tableCell">
+          <%= recref.prodimage %>
+        </td>
+        <td class="tableCell">
+          <%= recref.category_id %>
+        </td>
+        <td class="tableCell">
+          <%= recref.supplier_id %>
+        </td>
+        <td class="tableCell">
+          <%= recref.dimensions %>
+        </td>
+        <td class="tableCell">
+          <%= recref.wattage %>
+        </td>
+        <td class="tableCell">
+          <%= recref.cell_efficiency %>
+        </td>
+        <td class="tableCell">
+          <%= recref.weight %>
+        </td>
+        <td class="tableCell">
+          <%= recref.power_tolerance %>
+        </td>
+        <td class="tableCell">
+          <%= recref.prodprice %>
+        </td>
+        <td class="tableCell">
+          <%= recref.status %>
+        </td>
+        <td class="tableCell">
+          <%= recref.quantity %>
+        </td>
+        <td class="tableCell"><a href="/product/<%= recref.product_id %>/show">Details</a></td>
+      </tr>
+      <% }); %>
+  </table>
+  <% } else { %>
+    <p>No Records Available</p>
+    <% } %>

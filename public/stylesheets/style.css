@@ -17,13 +17,11 @@ product{
   margin: 5px;
   border: 2px solid #000000;
   float: left;
-  background: lightblue;
-  box-shadow: 5px 4px 2px #888888;
+  box-shadow: 0px 0px 6px #666666;
   min-width: 200px;
   max-width: 200px;
   min-height: 250px;
   max-height: 250px;
-  border-radius: 20px;
   padding: 10px;
 }
 
@@ -53,12 +51,12 @@ product{
 
 .left-sub-banner{
   border: #3ac793 solid 5px;
-  border-radius: 15px;
-  height: 30rem;
+  height: 9.5rem;
   width: 50rem;
   background-color: #3ac793;
-  font-size: 5rem;
+  font-size: 3rem;
   text-align: center;
+  justify-content: center;
 }
 
 .right-sub-banner{
@@ -78,6 +76,57 @@ product{
 .about-banner{
 text-align: center;
 }
+
+.pageHeader{
+  text-align: center;
+  font-size: 3rem;
+  color: rgb(34, 37, 41);
+  font-weight: bolder;
+  text-shadow: #0000005b 0px 0px 10px;
+}
+
+/* .header{
+  background-color: #F28482;
+} */
+
+/* All records table */
+/* ----------------- */
+/* ----------------- */
+.allData {
+  border-bottom: solid #000000 3px;
+}
+
+th{
+  background-color: #3ac793;
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.leftPadTable{
+  padding-left: 12px;
+}
+
+.tableCell{
+  padding-left: 4px;
+  padding-right: 4px;
+  border-left: #000000 2px solid;
+  border-right: #000000 2px solid;
+  border-bottom: #000000 1px solid;
+}
+
+.thr{
+  border-bottom: #000000 2px solid;
+}
+
+.topborder{
+  border-top: #000000 2px solid;
+}
+
+/* End All Records Table */
+/* --------------------- */
+/* --------------------- */
+
 
 /* Start Navbar Styles */
 /*  */

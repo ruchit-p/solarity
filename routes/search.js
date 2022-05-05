@@ -5,7 +5,7 @@ var router = express.Router();
 // ==================================================
 router.post("/", function (req, res, next) {
   let query =
-    "SELECT product_id, productname, prodimage, category_id, supplier_id, dimensions, wattage, cell_efficiency, weight, power_tolerance, prodprice, status, quantity  FROM product WHERE description LIKE '%" +
+    "SELECT product_id, productname, prodimage, category_id, supplier_id, dimensions, wattage, cell_efficiency, weight, power_tolerance, prodprice, status, quantity FROM product WHERE description LIKE '%" +
     req.body.searchcriteria +
     "%' OR productname LIKE '%" +
     req.body.searchcriteria +

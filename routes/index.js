@@ -10,7 +10,17 @@ router.get("/", function (req, res, next) {
       console.log(err);
       res.render("error");
     }
-    res.render("index", { allrecs: result, title: "Solarity" });
+
+    let query1 =
+      "SELECT promotion_id, promotitle, promoimage FROM promotion WHERE startdate <= CURRENT_DATE() and enddate >= CURRENT_DATE()";
+    // execute query1
+    db.query(query1, (err, results2) => {
+      if (err) {
+        console.log(err);
+        res.render("error");
+      }
+      res.render("index", { allrecs: result, promos: results2, title: "Solarity" });
+    });
   });
 });
 module.exports = router;
