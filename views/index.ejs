@@ -15,7 +15,7 @@
   </div>
   <div class="container-fluid">
     <div class="row justify-content-evenly">
-      <div class="col mb-4 left-sub-banner align-items-center">
+      <div class="col mb-4 sub-banner align-items-center">
         <p class="mt-2">
           We are here to help you with all your solar needs.
         </p>
@@ -25,10 +25,6 @@
           <table>
             <tr>
               <td>
-
-
-
-
                 <% if (allrecs.length> 0) {%>
                   <% allrecs.forEach((recref, index)=> { %>
                     <product>
@@ -77,7 +73,7 @@
                     <% promos.forEach((recref, index)=> { %>
                       <tr>
                         <td>
-                          <%= recref.promoimage %>
+                          <img class="promoImage" src="/images/<%= recref.promoimage %>" alt="">
                         </td>
                       </tr>
                       <% }); %>
