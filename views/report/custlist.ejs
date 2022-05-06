@@ -2,3 +2,52 @@
     <h1 class="pageHeader">Customer Report</h1>
 </div>
 
+<% if (allrecs.length> 0) {%>
+    <table class="allData">
+        <!-- add table header -->
+        <tr class="thr">
+            <th class="leftPadTable tableCell">ID</th>
+            <th class="tableCell">First Name</th>
+            <th class="tableCell">Last Name</th>
+            <th class="tableCell">Email</th>
+            <th class="tableCell">Address Line 1</th>
+            <th class="tableCell">City</th>
+            <th class="tableCell">State</th>
+            <th class="tableCell">Zip</th>
+            <th class="tableCell">Username</th>
+        </tr>
+
+        <% allrecs.forEach((recref, index)=> { %>
+            <tr>
+                <td class="leftPadTable tableCell">
+                    <%= recref.customer_id %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.firstname %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.lastname %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.email %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.address1 %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.city %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.state %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.zip %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.username %>
+                </td>
+            <% }); %>
+    </table>
+    <% } else { %>
+        <p>No Records Available</p>
+        <% } %>

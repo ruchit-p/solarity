@@ -2,3 +2,41 @@
     <h1 class="pageHeader">Sale Report</h1>
 </div>
 
+<% if (allrecs.length> 0) {%>
+    <table class="allData">
+        <!-- add table header -->
+        <tr class="thr">
+            <th class="leftPadTable tableCell">Order ID</th>
+            <th class="tableCell">Customer ID</th>
+            <th class="tableCell">Sale Date</th>
+            <th class="tableCell">Customer Notes</th>
+            <th class="tableCell">Payment Status</th>
+            <th class="tableCell">Authorization Number</th>
+        </tr>
+
+        <% allrecs.forEach((recref, index)=> { %>
+            <tr>
+                <td class="leftPadTable tableCell">
+                    <%= recref.order_id %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.customer_id %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.saledate %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.customernotes %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.paymentstatus %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.authorizationnum %>
+                </td>
+            </tr>
+            <% }); %>
+    </table>
+    <% } else { %>
+        <p>No Records Available</p>
+        <% } %>

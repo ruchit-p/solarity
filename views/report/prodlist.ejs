@@ -2,3 +2,49 @@
     <h1 class="pageHeader">Product Report</h1>
 </div>
 
+<% if (allrecs.length> 0) {%>
+    <table class="allData">
+        <!-- add table header -->
+        <tr class="thr">
+            <th class="leftPadTable tableCell">ID</th>
+            <th class="tableCell">Name</th>
+            <th class="tableCell">Supplier ID</th>
+            <th class="tableCell">Category ID</th>
+            <th class="tableCell">Price</th>
+            <th class="tableCell">Status</th>
+            <th class="tableCell">Quantity</th>
+            <th class="tableCell">Homepage</th>
+        </tr>
+
+        <% allrecs.forEach((recref, index)=> { %>
+            <tr>
+                <td class="leftPadTable tableCell">
+                    <%= recref.product_id %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.productname %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.supplier_id %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.category_id %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.prodprice %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.status %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.quantity %>
+                </td>
+                <td class="tableCell">
+                    <%= recref.homepage %>
+                </td>
+            </tr>
+            <% }); %>
+    </table>
+    <% } else { %>
+        <p>No Records Available</p>
+        <% } %>
