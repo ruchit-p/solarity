@@ -1,2 +1,6 @@
 Improve about, contact, privacy policy, and help pages
 
+Have promotions within the listings and have a right bar for promotions
+
+Add a friendly image to error pages
+

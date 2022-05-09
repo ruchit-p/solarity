@@ -15,13 +15,12 @@
   </div>
   <div class="container-fluid">
     <div class="row justify-content-evenly">
-      <div class="col mb-4 sub-banner align-items-center">
+      <div class="col-auto mb-4 sub-banner align-items-center">
         <p class="mt-2">
           We are here to help you with all your solar needs.
         </p>
       </div>
-      <div class="row">
-        <div class="col-lg-16 col-md-12 mt-4 mb-4">
+        <div class="col-9 align-self-start mt-4 mb-4">
           <table>
             <tr>
               <td>
@@ -67,6 +66,12 @@
                     <% }); %>
                       <% } %>
               </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-3 float-end align-content-start justify-content-end d-flex">
+          <table class="justify-content-center">
+            <tr>
               <td>
                 <% if (promos.length> 0) {%>
                   <table>
@@ -84,7 +89,6 @@
           </table>
         </div>
       </div>
-    </div>
   </div>
 </body>
 

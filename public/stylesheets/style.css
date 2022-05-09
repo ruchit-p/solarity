@@ -6,6 +6,7 @@ body {
   height: 100%;
   width: 100%;
   margin: 0;
+  padding: 0;
   left: 0;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -50,13 +51,17 @@ product{
 }
 
 .sub-banner{
-  border: #3ac793 solid 5px;
+  border: rgb(33, 37, 41) solid 5px;
+  color: #ffffff;
   height: 9.5rem;
-  width: 50rem;
-  background-color: #3ac793;
-  font-size: 3rem;
+  width: 100%;
+  background-color: rgb(33, 37, 41);;
+  font-size: 3.5rem;
   text-align: center;
   justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
 }
 
 
@@ -79,6 +84,40 @@ text-align: center;
 .promoImage{
   width : 270px;
   height : 270px;
+}
+
+.bold{
+  font-weight: bolder;
+}
+
+._404 {
+  font-size: 7rem;
+}
+
+.errorH1{
+  font-size: 3rem;
+}
+
+.errorH2 {
+  font-size: 1.5rem;
+}
+
+.errorH3 {
+  font-size: 1.5rem;
+}
+
+.error-bg{
+  margin: 0 auto;
+  padding: 0;
+  overflow: auto;
+  background-image: url("/images/error404.jpeg");
+  background-size: cover;
+  height: 100%;
+  min-width: 100%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 /* .header{
