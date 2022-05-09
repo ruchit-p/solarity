@@ -20,75 +20,65 @@
           We are here to help you with all your solar needs.
         </p>
       </div>
-        <div class="col-9 align-self-start mt-4 mb-4">
-          <table>
-            <tr>
-              <td>
-                <% if (allrecs.length> 0) {%>
-                  <% allrecs.forEach((recref, index)=> { %>
-                    <product>
-                      <table>
-                        <tr>
-                          <td>
-                            <%= recref.productname %>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <%= recref.prodimage %>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <%= recref.category_id %>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <%= recref.supplier_id %>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <%= recref.prodprice %>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <%= recref.status %>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td><a href='/product/<%= recref.product_id %>/show'>Details</a></td>
-                        </tr>
-                      </table>
-                    </product>
-                    <% }); %>
-                      <% } %>
-              </td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-3 float-end align-content-start justify-content-end d-flex">
-          <table class="justify-content-center">
-            <tr>
-              <td>
-                <% if (promos.length> 0) {%>
-                  <table>
-                    <% promos.forEach((recref, index)=> { %>
+      <div class="col-10 align-self-start mt-4 mb-4">
+        <table>
+          <tr>
+            <td>
+              <% if (allrecs.length> 0) {%>
+                <% allrecs.forEach((recref, index)=> { %>
+                  <product>
+                    <table>
                       <tr>
-                        <td>
-                          <img class="promoImage" src="/images/<%= recref.promoimage %>" alt="">
+                        <td class="d-flex justify-content-center">
+                           <img class="prodImage" src="/images/<%= recref.prodimage %>" alt="<%= recref.prodimage %>">
                         </td>
                       </tr>
-                      <% }); %>
-                  </table>
-                  <% } %>
-              </td>
-            </tr>
-          </table>
-        </div>
+                      <tr>
+                        <td class="">
+                          <%= recref.productname %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          $<%= recref.prodprice %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <%= recref.status %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class=""><a href='/product/<%= recref.product_id %>/show'>Details</a></td>
+                      </tr>
+                    </table>
+                  </product>
+                  <% }); %>
+                    <% } %>
+            </td>
+          </tr>
+        </table>
       </div>
+      <div class="col-2 float-end align-top justify-content-end d-flex">
+        <table class="align-top justify-content-center">
+          <tr>
+            <td>
+              <% if (promos.length> 0) {%>
+                <table>
+                  <% promos.forEach((recref, index)=> { %>
+                    <tr>
+                      <td>
+                        <img class="promoImage" src="/images/<%= recref.promoimage %>" alt="">
+                      </td>
+                    </tr>
+                    <% }); %>
+                </table>
+                <% } %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </body>
 
