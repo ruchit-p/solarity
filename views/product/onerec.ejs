@@ -62,7 +62,7 @@
     </tr>
     <tr>
         <td> Price: </td>
-        <td> $<%= onerec.prodprice %>
+        <td> <%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(onerec.prodprice) %>
         </td>
     </tr>
     <tr>

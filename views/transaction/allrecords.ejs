@@ -17,7 +17,7 @@
     <td class="leftPadTable tableCell"><%= recref.transaction_id %></td>
     <td class="tableCell"><%= recref.order_id %></td>
     <td class="tableCell"><%= recref.product_id %></td>
-    <td class="tableCell"><%= recref.saleprice %></td>
+    <td class="tableCell"><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.saleprice) %></td>
     <td class="tableCell"><%= recref.qty %></td>
     <td class="tableCell"><a href="/transaction/<%= recref.transaction_id %>/show"> Details</a></td>
     <td class="tableCell">

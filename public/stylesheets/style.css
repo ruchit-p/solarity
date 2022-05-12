@@ -34,7 +34,7 @@ product{
 
 .homepage-banner{
   height: auto;
-  width: 100%;
+  width: 100vw;
 }
 
 
@@ -45,15 +45,15 @@ product{
   transform: translate(-50%, -50%);
   text-align: center;
   color: #ececec;
-  font-size: 5vw;
+  font-size: 6vw;
   font-weight: bold;
-  
+  text-shadow: 0px 0px 10px #666666;
 }
 
 .sub-banner{
   border: rgb(33, 37, 41) solid 5px;
   color: #ffffff;
-  height: 20vh;
+  height: 6rem;
   width: 100%;
   background-color: rgb(33, 37, 41);;
   font-size: 5vh;
@@ -62,6 +62,7 @@ product{
   align-items: center;
   display: flex;
   flex-direction: row;
+  padding: 5px;
 }
 
 
@@ -89,6 +90,10 @@ text-align: center;
 .promoImage{
   width : 250px;
   height : 250px;
+}
+
+.promoImg{
+  contain: content;
 }
 
 .bold{

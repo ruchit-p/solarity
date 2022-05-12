@@ -18,7 +18,7 @@
     <td class="leftPadTable tableCell"><%= recref.review_id %></td>
     <td class="tableCell"><%= recref.customer_id %></td>
     <td class="tableCell"><%= recref.product_id %></td>
-    <td class="tableCell"><%= recref.reviewdate %></td>
+    <td class="tableCell"><%= recref.reviewdate.toLocaleDateString() %></td>
     <td class="tableCell"><%= recref.rating %></td>
     <td class="tableCell"><%= recref.status %></td>
     <td class="tableCell"><a href="/review/<%= recref.review_id %>/show"> Details</a></td>

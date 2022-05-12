@@ -21,7 +21,7 @@
     <td class="tableCell"><%= recref.productname %></td>
     <td class="tableCell"><%= recref.supplier_id %></td>
     <td class="tableCell"><%= recref.category_id %></td>
-    <td class="tableCell"><%= recref.prodprice %></td>
+    <td class="tableCell"><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.prodprice) %></td>
     <td class="tableCell"><%= recref.status %></td>
     <td class="tableCell"><%= recref.quantity %></td>
     <td class="tableCell"><%= recref.homepage %></td>

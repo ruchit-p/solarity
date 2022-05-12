@@ -20,8 +20,17 @@
       <td><input type="number" name="supplier_id" required /></td>
     </tr>
     <tr>
-      <td>Category ID:</td>
-      <td><input type="number" name="category_id" required /></td>
+      <td> Category: </td>
+      <td> <select name="category_id" required>
+          <optgroup label="Select Category">
+            <% for (var i=0; i < category.length; i++) { %>
+              <option value=<%=category[i].category_id %>>
+                <%= category[i].categoryname %>
+              </option>
+              <% } %>
+          </optgroup>
+        </select>
+      </td>
     </tr>
     <tr>
       <td>Dimensions:</td>
@@ -51,10 +60,11 @@
       <td>Status:</td>
       <td>
         <select name="status" required>
-          <option selected disabled>Choose Status</option>
-          <option>Available</option>
-          <option>Discontinued</option>
-          <option>Future Plan</option>
+          <optgroup label="Select Status">
+              <option>Available</option>
+              <option>Discontinued</option>
+              <option>Future Plan</option>
+          </optgroup>      
         </select>
       </td>
     </tr>

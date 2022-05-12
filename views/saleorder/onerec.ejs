@@ -2,7 +2,7 @@
     <table>
         <tr> <td> Order ID: </td> <td> <%= onerec.order_id %> </td> </tr>
         <tr> <td> Customer ID: </td> <td> <%= onerec.customer_id %> </td> </tr>
-        <tr> <td> Sale Date: </td> <td> <%= onerec.saledate %> </td> </tr>
+        <tr> <td> Sale Date: </td> <td> <%= onerec.saledate.toDateString() %> </td> </tr>
         <tr> <td> Customer Notes: </td> <td> <%= onerec.customernotes %> </td> </tr>
         <tr> <td> Payment Status: </td> <td> <%= onerec.paymentstatus %> </td> </tr>
         <tr> <td> Authorization Number: </td> <td> <%= onerec.authorizationnum %> </td> </tr>

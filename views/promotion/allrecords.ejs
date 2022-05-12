@@ -1,0 +1,39 @@
+<% if (allrecs.length > 0) {%>
+<table class="allData">
+    <!-- add table header -->
+    <tr class="thr">
+      <th class="leftPadTable tableCell">Promotion ID</th>
+      <th class="tableCell">Promotion Title</th>
+      <th class="tableCell">Description</th>
+      <th class="tableCell">Start Date</th>
+      <th class="tableCell">End Date</th>
+      <th class="tableCell">Discount Rate %</th>
+      <th class="tableCell">Details</th>
+      <th class="tableCell">Edit</th>
+      <th class="tableCell">Delete</th>
+    </tr>
+    
+  <% allrecs.forEach((recref, index) => { %>
+  <tr>
+    <td class="leftPadTable tableCell"><%= recref.promotion_id %></td>
+    <td class="tableCell"><%= recref.promotitle %></td>
+    <td class="tableCell"><%= recref.description %></td>
+    <td class="tableCell"><%= recref.startdate.toLocaleDateString() %></td>
+    <td class="tableCell"><%= recref.enddate.toLocaleDateString() %></td>
+    <td class="tableCell"><%= recref.discountrate * 100 %>%</td>
+    <td class="tableCell"><a href="/promotion/<%= recref.promotion_id %>/show"> Details</a></td>
+    <td class="tableCell">
+      <a href="/promotion/<%= recref.promotion_id %>/edit">Edit</a>
+    </td>
+    <td class="tableCell">
+      <a href="/promotion/<%= recref.promotion_id %>/delete"onclick="return confirm('Are you sure you want to delete this record?');">Delete</a>
+    </td>
+  </tr>
+  <% }); %>
+</table>
+<% } else { %>
+<p>No Records Available</p>
+<% } %>
+<br>
+<br>
+<p><a href="/promotion/addrecord">Add New</a></p>

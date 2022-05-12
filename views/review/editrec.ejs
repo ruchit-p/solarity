@@ -17,7 +17,7 @@
     <tr>
       <td>Review Date:</td>
       <td>
-        <input type="date" name="reviewdate" value="<%= onerec.reviewdate %>"
+        <input type="date" name="reviewdate" value="<%= onerec.reviewdate.toISOString().split('T')[0] %>"
         required>
       </td>
     </tr>

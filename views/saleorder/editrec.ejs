@@ -11,7 +11,7 @@
     <tr>
       <td>Sale Date:</td>
       <td>
-        <input type="date" name="saledate" value="<%= onerec.saledate %>" required />
+        <input type="date" name="saledate" value="<%= onerec.saledate.toISOString().split('T')[0] %>" required />
       </td>
     </tr>
     <tr>

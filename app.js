@@ -42,6 +42,7 @@ var saleorderRouter = require("./routes/saleorder");
 var reviewRouter = require("./routes/review");
 var searchRouter = require("./routes/search");
 var reportRouter = require("./routes/report");
+var promotionRouter = require("./routes/promotion");
 
 var app = express();
 
@@ -72,6 +73,7 @@ app.use("/saleorder", saleorderRouter);
 app.use("/review", reviewRouter);
 app.use("/search", searchRouter);
 app.use("/report", reportRouter);
+app.use("/promotion", promotionRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

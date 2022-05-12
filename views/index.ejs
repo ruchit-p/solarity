@@ -59,24 +59,16 @@
           </tr>
         </table>
       </div>
-      <div class="col-2 float-end align-top justify-content-end d-flex">
-        <table class="align-top justify-content-center">
-          <tr>
-            <td>
+      <div class="col-2 mt-4 float-end align-top justify-content-end d-flex">
+        <div class="row align-top justify-content-evenly">
               <% if (promos.length> 0) {%>
-                <table>
                   <% promos.forEach((recref, index)=> { %>
-                    <tr>
-                      <td>
-                        <img class="promoImage" src="/images/<%= recref.promoimage %>" alt="">
-                      </td>
-                    </tr>
+                    <div class="promoImg">
+                      <img class="promoImage" src="/images/<%= recref.promoimage %>" alt="">
+                    </div>
                     <% }); %>
-                </table>
                 <% } %>
-            </td>
-          </tr>
-        </table>
+        </div>
       </div>
     </div>
   </div>

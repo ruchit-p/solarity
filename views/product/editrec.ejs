@@ -22,9 +22,19 @@
       </td>
     </tr>
     <tr>
-      <td>Category ID:</td>
-      <td>
-        <input type="number" name="category_id" value="<%= onerec.category_id %>" required>
+      <td> Category ID: </td>
+      <td> <select name="category_id" required>
+          <% for (var i=0; i < category.length; i++) { %>
+            <% if (category[i].category_id==onerec.category_id) { %>
+              <option selected value=<%=category[i].category_id %>>
+                <%= category[i].categoryname %>
+              </option>
+              <% } else { %>
+                <option value=<%=category[i].category_id %>>
+                  <%= category[i].categoryname %>
+                </option>
+                <% } }%>
+        </select>
       </td>
     </tr>
     <tr>
@@ -77,6 +87,7 @@
             <%= onerec.status %>
           </option>
           <option>Available</option>
+          <option>Out of Stock</option>
           <option>Discontinued</option>
           <option>Future Plan</option>
         </select>
@@ -94,11 +105,11 @@
       </td>
       <td>
         <!-- check if the homepage value is 1, if it is then use checked property for checkbox -->
-        <% if (onerec.homepage) { %> 
+        <% if (onerec.homepage) { %>
           <input type="checkbox" name="homepage" value="onerec.homepage" checked />
-        <% } else { %> 
-          <input type="checkbox" name="homepage" value="onerec.homepage" />
-        <% } %> 
+          <% } else { %>
+            <input type="checkbox" name="homepage" value="onerec.homepage" />
+            <% } %>
       </td>
     </tr>
   </table>

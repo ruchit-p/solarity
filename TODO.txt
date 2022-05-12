@@ -4,3 +4,10 @@ Have promotions within the listings and have a right bar for promotions
 
 Add a friendly image to error pages
 
+Make crud for promotions
+
+auto select supplier and show supplier names instead of id in products and similar tables
+
+add ratings radio controls for review
+
+fix details page (info is spead apart too far)

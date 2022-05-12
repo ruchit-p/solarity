@@ -1,0 +1,37 @@
+<h1>New Record</h1>
+<form action="/promotion" method="post">
+  <table>
+    <tr>
+      <td>Promotion Title:</td>
+      <td><input type="text" name="promotitle" required /></td>
+    </tr>
+    <tr>
+      <td>Promotion Image:</td>
+      <td><input type="text" name="promoimage" required /></td>
+    </tr>
+    <tr>
+      <td>Description:</td>
+      <td>
+        <textarea
+          name="description"
+          rows="10"
+          cols="30"
+          placeholder="Description"
+        ></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td>Start Date:</td>
+      <td><input type="date" name="startdate" required /></td>
+    </tr>
+    <tr>
+      <td>End Date:</td>
+      <td><input type="date" name="enddate" required /></td>
+    </tr>
+    <tr>
+      <td>Discount Rate:</td>
+      <td><input type="text" name="discountrate" required /> %</td>
+    </tr>
+  </table>
+  <button type="submit">Save</button>
+</form>
