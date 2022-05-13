@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var layouts = require("express-ejs-layouts");
 var dotenv = require("dotenv");
+const session = require("express-session");
 dotenv.config();
 
 // import mariadb and set up connection
@@ -56,6 +57,12 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(layouts);
+
+app.use(session({ secret: "mysecretKey1213123999**23" }));
+app.use(function (req, res, next) {
+  res.locals.session = req.session;
+  next();
+})
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
