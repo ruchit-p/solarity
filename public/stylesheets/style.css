@@ -24,6 +24,7 @@ product{
   min-height: 350px;
   max-height: 350px;
   padding: 10px;
+  contain:strict;
 }
 
 .banner-container{
