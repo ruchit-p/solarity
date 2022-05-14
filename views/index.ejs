@@ -20,7 +20,7 @@
           We are here to help you with all your solar needs.
         </p>
       </div>
-      <div class="col-10 align-self-start mt-4 mb-4">
+      <div class="col-10 align-top mt-4 mb-4">
         <table>
           <tr>
             <td>
@@ -30,7 +30,7 @@
                     <table>
                       <tr>
                         <td class="d-flex justify-content-center">
-                           <img class="prodImage" src="/images/<%= recref.prodimage %>" alt="<%= recref.prodimage %>">
+                          <img class="prodImage" src="/images/<%= recref.prodimage %>" alt="<%= recref.prodimage %>">
                         </td>
                       </tr>
                       <tr>
@@ -60,13 +60,13 @@
         </table>
       </div>
       <div class="col-2 mt-4 float-end align-top justify-content-end d-flex">
-        <div class="row align-top justify-content-evenly">
-              <% if (promos.length> 0) {%>
-                  <% promos.forEach((recref, index)=> { %>
-                    <div class="promoImg">
-                      <img class="promoImage" src="/images/<%= recref.promoimage %>" alt="">
-                    </div>
-                    <% }); %>
+        <div class="row align-top justify-content-start">
+          <% if (promos.length> 0) {%>
+            <% promos.forEach((recref, index)=> { %>
+              <div class="promoImg">
+                <img class="promoImage" src="/images/<%= recref.promoimage %>" alt="">
+              </div>
+              <% }); %>
                 <% } %>
         </div>
       </div>

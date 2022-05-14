@@ -95,6 +95,9 @@ text-align: center;
 .promoImage{
   width : 250px;
   height : 250px;
+  border: #2d2d2d solid 2px;
+  margin-bottom: 5px;
+  box-shadow: #666666 0px 0px 6px;
 }
 
 .promoImg{
