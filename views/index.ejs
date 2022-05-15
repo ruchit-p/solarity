@@ -26,33 +26,24 @@
             <td>
               <% if (allrecs.length> 0) {%>
                 <% allrecs.forEach((recref, index)=> { %>
-                  <product>
-                    <table>
-                      <tr>
-                        <td class="d-flex justify-content-center">
-                          <img class="prodImage" src="/images/<%= recref.prodimage %>" alt="<%= recref.prodimage %>">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="">
+                  <div class="product">
+                    <div class="productImage">
+                      <img class="prodImage" src="/images/<%= recref.prodimage %>" alt="<%= recref.prodimage %>">
+                    </div>
+                    <div class="productInfo">
+                      <div class="productName">
+                        <h1>
                           <%= recref.productname %>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          $<%= recref.prodprice %>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <%= recref.status %>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class=""><a href='/product/<%= recref.product_id %>/show'>Details</a></td>
-                      </tr>
-                    </table>
-                  </product>
+                        </h1>
+                      </div>
+                      <p class="price">$<%= recref.prodprice %>
+                      </p>
+                      <p class="productStatus">
+                        <%= recref.status %>
+                      </p>
+                      <a class="button" href='/product/<%= recref.product_id %>/show'>Details</a>
+                    </div>
+                  </div>
                   <% }); %>
                     <% } %>
             </td>

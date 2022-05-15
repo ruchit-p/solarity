@@ -11,8 +11,17 @@ router.get("/", function (req, res, next) {
   db.query(query, (err, result) => {
     if (err) {
       res.redirect("/");
+    } else {
+      let query = "SELECT supplier_id, suppliername FROM supplier";
+      // execute query
+      db.query(query, (err, supls) => {
+        if (err) {
+          console.log(err);
+          res.render("error");
+        }
+        res.render("catalog", { allrecs: result, suppliers: supls });
+      });
     }
-    res.render("catalog", { allrecs: result });
   });
 });
 

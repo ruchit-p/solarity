@@ -3,45 +3,35 @@
         <td>
             <% if (allrecs.length> 0) {%>
                 <% allrecs.forEach((recref, index)=> { %>
-                    <product>
+                    <div class="product">
                         <form action="/catalog/add" method="post">
                             <input type="hidden" name="product_id" value=<%=recref.product_id %> >
-                            <table>
-                                <tr>
-                                    <td class="productTitle">
-                                        <%= recref.productname %>
-                                    </td>
-                                    <td>
-                                        <%= Intl.NumberFormat('en-US', { style: 'currency' , currency: 'USD'
-                                            }).format(recref.prodprice) %>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img class="prodImage" src="/images/<%= recref.prodimage %>"></td>
-                                    <tr>
-                                        <td>
-                                            <%= recref.status %>
-                                        </td>
-                                    </tr>
-                                </tr>
-                                <!-- <tr>
-                                    <td>
-                                        <%= recref.category_id %>
-                                    </td>
-                                    <td>
-                                        <%= recref.supplier_id %>
-                                    </td>
-                                </tr> -->
-                                <tr>
-                                    <td><a href='/product/<%= recref.product_id %>/show'>Show Details</a></td>
-                                    <td>Quantity: <input type="number" name="qty" required></td>
-                                </tr>
-                                <tr>
-                                    <button type="submit">Add to Cart</button>
-                                </tr>
-                            </table>
+                            <div class="productImage">
+                                <img class="prodImage" src="/images/<%= recref.prodimage %>">
+                            </div>
+                            <div class="productInfo">
+                                <div class="productName">
+                                    <%= recref.productname %>
+                                </div>
+                                <p class="price"> <%= Intl.NumberFormat('en-US', { style: 'currency' , currency: 'USD' }).format(recref.prodprice) %>
+                                <p class="productStatus">
+                                    <%= recref.status %>
+                                </p>
+                                <p>
+                                    <% console.log(suppliers[1].supplier_id) %> 
+                                    <% for (x in suppliers) {%>
+                                        <% if (x == recref.supplier_id) {%>  
+                                        <%= x.suppliername %>
+                                        
+                                        <% }} %> 
+                                </p>
+                                <a class="button" href='/product/<%= recref.product_id %>/show'>Details</a>
+                                <label for="qty">Quantity: </label>
+                                <input type="number" name="qty" required>
+                                <button type="submit">Add to Cart</button>
+                            </div>
                         </form>
-                    </product>
+                    </div>
                 <% }); %>
             <% } %>
         </td>
