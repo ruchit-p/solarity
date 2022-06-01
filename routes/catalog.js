@@ -19,7 +19,7 @@ router.get("/", function (req, res, next) {
           console.log(err);
           res.render("error");
         }
-        res.render("catalog", { allrecs: result, suppliers: supls });
+        res.render("catalog/catalog", { allrecs: result, suppliers: supls });
       });
     }
   });
@@ -84,6 +84,57 @@ router.get("/cart", function (req, res, next) {
         res.render("cart", { cartitems: result, qtys: req.session.qty });
       }
     });
+  }
+});
+
+// ==================================================
+// Route save cart items to SALEORDER and ORDERDETAILS tables
+// ==================================================
+router.get("/checkout", function (req, res, next) {
+  var proditemprice = 0;
+  // Check to make sure the customer has logged-in
+  if (
+    typeof req.session.customer_id !== "undefined" &&
+    req.session.customer_id
+  ) {
+    // Save SALEORDER Record:
+    let insertquery =
+      "INSERT INTO saleorder(customer_id, saledate, customernotes, paymentstatus, authorizationnum) VALUES (?, now(), 'None', 'Paid', '12345678')";
+    db.query(insertquery, [req.session.customer_id], (err, result) => {
+      if (err) {
+        console.log(err);
+        res.render("error");
+      } else {
+        // Obtain the order_id value of the newly created SALEORDER Record
+        var order_id = result.insertId;
+        // Save transaction Records
+        // There could be one or more items in the shopping cart
+        req.session.cart.forEach((cartitem, index) => {
+          // Perform transaction table insert
+          let insertquery =
+            "INSERT INTO transaction(order_id, product_id, saleprice, qty) VALUES (?, ?, (SELECT prodprice from product where product_id = " +
+            cartitem +
+            "), ?)";
+          db.query(
+            insertquery,
+            [order_id, cartitem, req.session.qty[index]],
+            (err, result) => {
+              if (err) {
+                res.render("error");
+              }
+            }
+          );
+        });
+        // Empty out the items from the cart and quantity arrays
+        req.session.cart = [];
+        req.session.qty = [];
+        // Display confirmation page
+        res.render("catalog/checkout", { ordernum: order_id });
+      }
+    });
+  } else {
+    // Prompt customer to login
+    res.redirect("/customer/login");
   }
 });
 

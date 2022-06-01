@@ -11,6 +11,7 @@
       <th class="tableCell">State</th>
       <th class="tableCell">Zip</th>
       <th class="tableCell">Username</th>
+      <th class="tableCell">IsAdmin</th>
       <th class="tableCell">Details</th>
       <th class="tableCell">Edit</th>
       <th class="tableCell">Delete</th>
@@ -27,6 +28,9 @@
     <td class="tableCell"><%= recref.state %></td>
     <td class="tableCell"><%= recref.zip %></td>
     <td class="tableCell"><%= recref.username %></td>
+    <td class="tableCell">
+      <%= recref.isadmin %>
+    </td>
     <td class="tableCell"><a href="/customer/<%= recref.customer_id %>/show"> Details</a></td>
     <td class="tableCell">
       <a href="/customer/<%= recref.customer_id %>/edit">Edit</a>

@@ -1,1 +1,0 @@
-1) show short date in allrecords, onerecord, edit

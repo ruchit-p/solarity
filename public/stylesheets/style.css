@@ -21,8 +21,8 @@ body {
   box-shadow: 0px 0px 6px #666666;
   min-width: 250px;
   max-width: 250px;
-  min-height: 350px;
-  max-height: 350px;
+  min-height: 400px;
+  max-height: 400px;
   padding: 10px;
   contain:strict;
 }
@@ -32,12 +32,13 @@ body {
 }
 
 .product .productStatus {
-  margin-top: -.6rem;
+  margin-top: -1rem;
 }
 
 .product .button {
   display: flex;
   margin-top: -.6rem;
+  margin-bottom: .6rem;
   width: 100%;
   height: 2rem;
   background: rgb(33, 37, 41);
@@ -51,6 +52,14 @@ body {
 .product .button:hover {
   background: rgb(50, 55, 59);
   color: white;
+}
+
+.product .lbQty {
+  font-size: .8rem;
+}
+
+.product .inpQty {
+  width: 4rem;
 }
 
 .product h1 {
@@ -237,7 +246,7 @@ th{
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 17px !important;
 }
 
 /* Change the color of links on hover */
@@ -270,6 +279,12 @@ th{
 .navbar-logo{
   width: 15rem;
   height: auto;
+}
+
+.navbar-cart{
+  width: 2rem;
+  height: auto;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
 }
 
 
