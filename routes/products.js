@@ -21,11 +21,33 @@ router.get("/", adminonly, function (req, res, next) {
     if (err) {
       console.log(err);
       res.render("error");
+    } else {
+      let query2 =
+        "SELECT category_id, categoryname FROM category";
+      db.query(query2, (err, result2) => {
+        if (err) {
+          console.log(err);
+          res.render("error");
+        } else {
+          let query3 =
+            "SELECT supplier_id, suppliername FROM supplier";
+          db.query(query3, (err, result3) => {
+            if (err) {
+              console.log(err);
+              res.render("error");
+            } else {
+              res.render("product/allrecords", {
+                allrecs: result,
+                category: result2,
+                supplier: result3,
+              });
+            }
+          })
+        }
+      })
     }
-    res.render("product/allrecords", { allrecs: result });
   });
 });
-
 // ==================================================
 // Route to view one specific record. Notice the view is one record
 // ==================================================

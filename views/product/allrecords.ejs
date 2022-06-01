@@ -5,7 +5,7 @@
       <th class="leftPadTable tableCell">ID</th>
       <th class="tableCell">Name</th>
       <th class="tableCell">Supplier ID</th>
-      <th class="tableCell">Category ID</th>
+      <th class="tableCell">Category</th>
       <th class="tableCell">Price</th>
       <th class="tableCell">Status</th>
       <th class="tableCell">Quantity</th>
@@ -19,12 +19,25 @@
   <tr>
     <td class="leftPadTable tableCell"><%= recref.product_id %></td>
     <td class="tableCell"><%= recref.productname %></td>
-    <td class="tableCell"><%= recref.supplier_id %></td>
-    <td class="tableCell"><%= recref.category_id %></td>
+    <% for (var i=0; i < supplier.length; i++) { %>
+      <% if (supplier[i].supplier_id==recref.supplier_id) { %>
+        <td class="tableCell">
+          <%=supplier[i].suppliername %>
+        </td>
+        <% } }%>
+
+    <% for (var i=0; i < category.length; i++) { %>
+      <% if (category[i].category_id==recref.category_id) { %>
+        <td class="tableCell"><%=category[i].categoryname %></td>
+          <% } }%>
     <td class="tableCell"><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.prodprice) %></td>
     <td class="tableCell"><%= recref.status %></td>
     <td class="tableCell"><%= recref.quantity %></td>
-    <td class="tableCell"><%= recref.homepage %></td>
+    <% if (recref.homepage) {%> 
+     <td class="tableCell">True</td> 
+    <% } else { %> 
+      <td class="tableCell">False</td>
+      <% } %> 
     <td class="tableCell"><a href="/product/<%= recref.product_id %>/show"> Details</a></td>
     <td class="tableCell">
       <a href="/product/<%= recref.product_id %>/edit">Edit</a>
