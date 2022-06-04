@@ -15,8 +15,10 @@
         <tr> <td> Username: </td> <td> <%= onerec.username %> </td> </tr>
         <tr>
             <td> IsAdmin: </td>
-            <td>
-                <%= onerec.isadmin %>
-            </td>
+            <% if (onerec.isadmin) {%>
+                <td >True</td>
+            <% } else { %>
+                <td>False</td>
+            <% } %>
         </tr>
     </table>

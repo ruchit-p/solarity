@@ -2,7 +2,7 @@
     <% var totqty=0 %>
         <% var lineitemcost=0 %>
             <% if (cartitems !='0' ) {%>
-                <p> Here products selected in your cart: </p>
+                <p class="cart-header"> Products in your cart: </p>
                 <table border=1>
                     <tr>
                         <th>Product Name</th>
@@ -24,10 +24,16 @@
                                 <%= item.prodimage %>
                             </td>
                             <td>
-                                <%= item.supplier_id %>
+                                <% for (var i=0; i < supplier.length; i++) { %>
+                                    <% if (supplier[i].supplier_id==item.supplier_id) { %>
+                                            <%=supplier[i].suppliername %>
+                                        <% } }%>
                             </td>
                             <td>
-                                <%= item.category_id %>
+                                <% for (var i=0; i < category.length; i++) { %>
+                                    <% if (category[i].category_id==item.category_id) { %>
+                                            <%=category[i].categoryname %>
+                                        <% } } %>
                             </td>
                             <td>
                                 <%= item.dimensions %>

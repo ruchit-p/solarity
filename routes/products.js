@@ -22,15 +22,13 @@ router.get("/", adminonly, function (req, res, next) {
       console.log(err);
       res.render("error");
     } else {
-      let query2 =
-        "SELECT category_id, categoryname FROM category";
+      let query2 = "SELECT category_id, categoryname FROM category";
       db.query(query2, (err, result2) => {
         if (err) {
           console.log(err);
           res.render("error");
         } else {
-          let query3 =
-            "SELECT supplier_id, suppliername FROM supplier";
+          let query3 = "SELECT supplier_id, suppliername FROM supplier";
           db.query(query3, (err, result3) => {
             if (err) {
               console.log(err);
@@ -42,17 +40,16 @@ router.get("/", adminonly, function (req, res, next) {
                 supplier: result3,
               });
             }
-          })
+          });
         }
-      })
+      });
     }
   });
 });
 // ==================================================
 // Route to view one specific record. Notice the view is one record
 // ==================================================
-router.get("/:recordid/show", adminonly, function (req, res, next) {
-  console.log("here");
+router.get("/:recordid/show", function (req, res, next) {
   let query =
     "SELECT product_id, productname, prodimage, description, category_id, supplier_id, wattage, cell_efficiency, weight, dimensions, prodprice, status, quantity, homepage FROM product WHERE product_id = " +
     req.params.recordid;
@@ -62,9 +59,27 @@ router.get("/:recordid/show", adminonly, function (req, res, next) {
       console.log(err);
       res.render("error");
     } else {
-      console.log("here");
-      console.log(result); // show in console
-      res.render("product/onerec", { onerec: result[0] });
+      let query2 = "SELECT category_id, categoryname FROM category";
+      db.query(query2, (err, result2) => {
+        if (err) {
+          console.log(err);
+          res.render("error");
+        } else {
+          let query3 = "SELECT supplier_id, suppliername FROM supplier";
+          db.query(query3, (err, result3) => {
+            if (err) {
+              console.log(err);
+              res.render("error");
+            } else {
+              res.render("product/onerec", {
+                onerec: result[0],
+                category: result2,
+                supplier: result3,
+              });
+            }
+          });
+        }
+      });
     }
   });
 });
@@ -88,6 +103,12 @@ router.get("/addrecord", adminonly, function (req, res, next) {
 // Route to obtain user input and save in database.
 // ==================================================
 router.post("/", adminonly, function (req, res, next) {
+  if (req.body.homepage == "on") {
+    req.body.homepage = 1;
+  } else {
+    req.body.homepage = 0;
+  }
+
   let insertquery =
     "INSERT INTO product (productname, prodimage, description, category_id, supplier_id, dimensions, wattage, cell_efficiency, weight, power_tolerance, prodprice, status, quantity, homepage) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
   db.query(
@@ -138,8 +159,21 @@ router.get("/:recordid/edit", adminonly, function (req, res, next) {
         if (err) {
           console.log(err);
           res.render("error");
+        } else {
+          let query = "SELECT supplier_id, suppliername FROM supplier";
+          // execute query
+          db.query(query, (err, supps) => {
+            if (err) {
+              console.log(err);
+              res.render("error");
+            }
+            res.render("product/editrec", {
+              onerec: result[0],
+              category: catss,
+              supplier: supps,
+            });
+          });
         }
-        res.render("product/editrec", { onerec: result[0], category: catss });
       });
     }
   });
@@ -149,15 +183,15 @@ router.get("/:recordid/edit", adminonly, function (req, res, next) {
 // Route to save edited data in database.
 // ==================================================
 router.post("/save", adminonly, function (req, res, next) {
+  if (req.body.homepage == "on") {
+    req.body.homepage = 1;
+  } else {
+    req.body.homepage = 0;
+  }
+
   let updatequery =
     "UPDATE product SET productname = ?, prodimage = ?, description = ?, category_id = ?, supplier_id = ?, dimensions = ?, wattage = ?, cell_efficiency = ?, weight = ?, power_tolerance = ?, prodprice = ?, status = ?, quantity = ?, homepage = ? WHERE product_id = " +
     req.body.product_id;
-
-  var hmpage = 0;
-  if (req.body.homepage) {
-    hmpage = 1;
-  }
-
   db.query(
     updatequery,
     [
@@ -174,7 +208,7 @@ router.post("/save", adminonly, function (req, res, next) {
       req.body.prodprice,
       req.body.status,
       req.body.quantity,
-      hmpage,
+      req.body.homepage,
     ],
     (err, result) => {
       if (err) {

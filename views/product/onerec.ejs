@@ -27,13 +27,19 @@
     <tr>
         <td> Category ID: </td>
         <td>
-            <%= onerec.category_id %>
+            <% for (var i=0; i < category.length; i++) { %>
+                <% if (category[i].category_id==onerec.category_id) { %>
+                    <%=category[i].categoryname %>
+            <% } }%>
         </td>
     </tr>
     <tr>
         <td> Supplier ID: </td>
         <td>
-            <%= onerec.supplier_id %>
+            <% for (var i=0; i < supplier.length; i++) { %>
+                <% if (supplier[i].supplier_id==onerec.supplier_id) { %>
+                    <%=supplier[i].suppliername %>
+                        <% } }%>
         </td>
     </tr>
     <tr>
@@ -62,7 +68,8 @@
     </tr>
     <tr>
         <td> Price: </td>
-        <td> <%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(onerec.prodprice) %>
+        <td>
+            <%= Intl.NumberFormat('en-US', { style: 'currency' , currency: 'USD' }).format(onerec.prodprice) %>
         </td>
     </tr>
     <tr>
@@ -83,4 +90,17 @@
             <%= onerec.homepage %>
         </td>
     </tr>
+    <tr>
+        <td> Add to Cart: </td>
+        <td>
+            <form action="../add" method="post">
+                <input type="hidden" name="product_id" value=<%=onerec.product_id %> >
+                <input class="inpQty" type="number" name="qty" required>
+                <button type="submit">Add to Cart</button>
+            </form>
+        </td>
+    </tr>
 </table>
+<form action="../../">
+    <button>Back</button>
+</form>

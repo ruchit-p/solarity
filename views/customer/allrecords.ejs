@@ -28,9 +28,11 @@
     <td class="tableCell"><%= recref.state %></td>
     <td class="tableCell"><%= recref.zip %></td>
     <td class="tableCell"><%= recref.username %></td>
-    <td class="tableCell">
-      <%= recref.isadmin %>
-    </td>
+    <% if (recref.isadmin) {%>
+    <td class="tableCell">True</td>
+    <% } else { %>
+      <td class="tableCell">False</td>
+      <% } %>
     <td class="tableCell"><a href="/customer/<%= recref.customer_id %>/show"> Details</a></td>
     <td class="tableCell">
       <a href="/customer/<%= recref.customer_id %>/edit">Edit</a>

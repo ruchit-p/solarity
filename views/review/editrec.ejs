@@ -31,9 +31,32 @@
     <tr>
       <td>Rating:</td>
       <td>
-        <input type="text" name="rating" value="<%= onerec.rating %>"
-        required>
-      </td>
+        <% if (onerec.rating==1) { %>
+          <input type="radio" name="rating" value="1" checked="true">★ <br />
+          <% } else { %>
+            <input type="radio" name="rating" value="1">★ <br />
+          <% }%>
+        <% if (onerec.rating==2) { %>
+          <input type="radio" name="rating" value="2" checked="true">★★ <br />
+          <% } else { %>
+            <input type="radio" name="rating" value="2">★★ <br />
+            <% }%>
+        <% if (onerec.rating==3) { %>
+          <input type="radio" name="rating" value="3" checked="true">★★★ <br />
+          <% } else { %>
+            <input type="radio" name="rating" value="3">★★★ <br />
+            <% }%>
+        <% if (onerec.rating==4) { %>
+          <input type="radio" name="rating" value="4" checked="true">★★★★ <br />
+          <% } else { %>
+            <input type="radio" name="rating" value="4">★★★★ <br />
+            <% }%>
+        <% if (onerec.rating==5) { %>
+          <input type="radio" name="rating" value="5" checked="true">★★★★★ <br />
+          <% } else { %>
+            <input type="radio" name="rating" value="5">★★★★★ <br />
+            <% }%>
+      </td>one
     </tr>
     <tr>
       <td>Status:</td>
@@ -44,3 +67,4 @@
   </table>
   <button type="submit">Save</button>
 </form>
+

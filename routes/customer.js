@@ -123,7 +123,7 @@ router.get("/:recordid/delete", adminonly, function (req, res, next) {
 // Route Enable Registration
 // ==================================================
 router.get("/register", function (req, res, next) {
-  res.render("customer/addrec");
+  res.render("customer/register");
 });
 
 // ==================================================
@@ -169,7 +169,7 @@ router.post("/", function (req, res, next) {
 // Route Provide Login Window
 // ==================================================
 router.get("/login", function (req, res, next) {
-  res.render("customer/login", { message: "Please Login" });
+  res.render("customer/login", { message: "" });
 });
 
 // ==================================================

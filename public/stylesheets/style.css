@@ -287,6 +287,28 @@ th{
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);
 }
 
+.empty {
+text-align: center;
+font-size: 3rem;
+text-shadow: #0000005b 0px 0px 10px;
+
+}
+
+.cart-header {
+  text-align: center;
+  font-size: 1.5rem;
+  color: rgb(34, 37, 41);
+  font-weight: bolder;
+  text-shadow: #0000005b 0px 0px 10px;
+}
+
+.privacy-header {
+  font-size: 4rem;
+  color: rgb(34, 37, 41);
+  font-weight: bolder;
+  text-shadow: #0000005b 0px 0px 10px;
+}
+
 
 /* End Footer Style */
 /*  */

@@ -5,6 +5,7 @@
       <th class="leftPadTable tableCell">Transaction ID</th>
       <th class="tableCell">Order ID</th>
       <th class="tableCell">Product ID</th>
+      <th class="tableCell">Product Name</th>
       <th class="tableCell">Sale Price</th>
       <th class="tableCell">Quantity</th>
       <th class="tableCell">Details</th>
@@ -17,6 +18,12 @@
     <td class="leftPadTable tableCell"><%= recref.transaction_id %></td>
     <td class="tableCell"><%= recref.order_id %></td>
     <td class="tableCell"><%= recref.product_id %></td>
+    <% for (var i=0; i < product.length; i++) { %>
+      <% if (product[i].product_id==recref.product_id) { %>
+        <td class="tableCell">
+          <%=product[i].productname %>
+        </td>
+        <% } }%>
     <td class="tableCell"><%= Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(recref.saleprice) %></td>
     <td class="tableCell"><%= recref.qty %></td>
     <td class="tableCell"><a href="/transaction/<%= recref.transaction_id %>/show"> Details</a></td>

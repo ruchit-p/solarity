@@ -5,7 +5,23 @@
         <tr> <td> Product ID: </td> <td> <%= onerec.product_id %> </td> </tr>
         <tr> <td> Review Date: </td> <td> <%= onerec.reviewdate.toDateString() %> </td> </tr>
         <tr> <td> Comments: </td> <td> <%= onerec.comments %> </td> </tr>
-        <tr> <td> Rating: </td> <td> <%= onerec.rating %> </td> </tr>
+        <tr> <td> Rating: </td> <td> 
+            <% if (onerec.rating==1) { %>
+                ★
+            <% } %>
+            <% if (onerec.rating==2) { %>
+                ★★
+                <% } %>
+            <% if (onerec.rating==3) { %>
+                ★★★
+                <% }%>
+            <% if (onerec.rating==4) { %>
+                ★★★★
+                <% } %>
+            <% if (onerec.rating==5) { %>
+                ★★★★★
+                <% }  %>
+            </td> </tr>
         <tr> <td> Status: </td> <td> <%= onerec.status %> </td>
         </tr>
     </table>

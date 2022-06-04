@@ -40,7 +40,18 @@
     <tr>
       <td>Supplier ID:</td>
       <td>
-        <input type="number" name="supplier_id" value="<%= onerec.supplier_id %>" required>
+        <select name="supplier_id" required>
+          <% for (var i=0; i < supplier.length; i++) { %>
+            <% if (supplier[i].supplier_id==onerec.supplier_id) { %>
+              <option selected value=<%=supplier[i].supplier_id %>>
+                <%= supplier[i].suppliername %>
+              </option>
+              <% } else { %>
+                <option value=<%=supplier[i].supplier_id %>>
+                  <%= supplier[i].suppliername %>
+                </option>
+                <% } }%>
+        </select>
       </td>
     </tr>
     <tr>
@@ -104,11 +115,11 @@
         Homepage:
       </td>
       <td>
-        <!-- check if the homepage value is 1, if it is then use checked property for checkbox -->
+        <% console.log(onerec.homepage) %> 
         <% if (onerec.homepage) { %>
-          <input type="checkbox" name="homepage" value="onerec.homepage" checked />
+          <input type="checkbox" name="homepage" checked />
           <% } else { %>
-            <input type="checkbox" name="homepage" value="onerec.homepage" />
+            <input type="checkbox" name="homepage" />
             <% } %>
       </td>
     </tr>

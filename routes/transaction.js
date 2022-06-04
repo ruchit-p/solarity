@@ -21,8 +21,18 @@ router.get("/", adminonly, function (req, res, next) {
     if (err) {
       console.log(err);
       res.render("error");
+    } else {
+      let query = "SELECT product_id, productname FROM product";
+      // execute query
+      db.query(query, (err, prods) => {
+        if (err) {
+          console.log(err);
+          res.render("error");
+        } else {
+          res.render("transaction/allrecords", { allrecs: result, product: prods });
+        }
+      });
     }
-    res.render("transaction/allrecords", { allrecs: result });
   });
 });
 
@@ -39,9 +49,18 @@ router.get("/:recordid/show", adminonly, function (req, res, next) {
       console.log(err);
       res.render("error");
     } else {
-      res.render("transaction/onerec", { onerec: result[0] });
+      let query = "SELECT product_id, productname FROM product";
+      // execute query
+      db.query(query, (err, prods) => {
+        if (err) {
+          console.log(err);
+          res.render("error");
+        } else {
+          res.render("transaction/onerec", { onerec: result[0], product: prods });
+        }
+      })
     }
-  });
+  })
 });
 
 // ==================================================

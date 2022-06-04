@@ -81,7 +81,30 @@ router.get("/cart", function (req, res, next) {
       if (err) {
         res.render("error");
       } else {
-        res.render("cart", { cartitems: result, qtys: req.session.qty });
+        let query = "SELECT category_id, categoryname FROM category";
+        // execute query
+        db.query(query, (err, catss) => {
+          if (err) {
+            console.log(err);
+            res.render("error");
+          } else {
+            let query = "SELECT supplier_id, suppliername FROM supplier";
+            // execute query
+            db.query(query, (err, supps) => {
+              if (err) {
+                console.log(err);
+                res.render("error");
+              } else {
+                res.render("cart", {
+                  cartitems: result,
+                  qtys: req.session.qty,
+                  category: catss,
+                  supplier: supps,
+                });
+              }
+            });
+          }
+        });
       }
     });
   }
