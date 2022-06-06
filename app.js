@@ -24,6 +24,7 @@ db.connect((err) => {
     res.render("error");
   } else {
     console.log("Connected to DB");
+    console.log("Running on Port: " + process.env.PORT);
   }
 });
 global.db = db;
@@ -63,7 +64,7 @@ app.use(session({ secret: "mysecretKey1213123999**23" }));
 app.use(function (req, res, next) {
   res.locals.session = req.session;
   next();
-})
+});
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
