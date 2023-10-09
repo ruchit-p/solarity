@@ -15,13 +15,12 @@ const db = mariadb.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
-  port: process.env.DB_PORT,
+  port: 3306,
 });
 // Connect to database
 db.connect((err) => {
   if (err) {
     console.log("Unable to connect to database due to error: " + err);
-    res.render("error");
   } else {
     console.log("Connected to DB");
     console.log("Running on Port: " + process.env.PORT);
@@ -60,7 +59,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(layouts);
 
-app.use(session({ secret: "mysecretKey1213123999**23" }));
+app.use(session({ secret: "mysecretKey1213123999**23", resave: false, saveUninitialized: true }));
 app.use(function (req, res, next) {
   res.locals.session = req.session;
   next();
