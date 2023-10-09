@@ -4,7 +4,7 @@
 
 ## Overview
 
-Solarity is a web application that showcases solar products and promotions. Built with Node.js and Express, it provides a platform for both customers and administrators to interact with the product catalog.
+Solarity is an eccommerce web application that showcases solar products and promotions. Built with Node.js and Express, it provides a platform for both customers and administrators to interact with the product catalog. Customers can add products to their cart, and also "checkout".
 
 ## Table of Contents
 
